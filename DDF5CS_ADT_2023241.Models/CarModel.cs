@@ -9,11 +9,11 @@ namespace DDF5CS_ADT_2023241.Models
     public class CarModel
     {
         public int CarModelId { get; set; }
-        public string ModelName { get; set; }
+        public string? ModelName { get; set; }
 
         public int BrandId { get; set; }
-        public Brand Brand { get; set; }
+        public Brand? Brand { get; set; }
 
-        public ICollection<RentInstance> RentInstances { get; set; }
+        public ICollection<RentInstance>? RentInstances { get; set; }
     }
 }

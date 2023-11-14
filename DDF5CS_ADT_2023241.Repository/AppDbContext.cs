@@ -28,6 +28,10 @@ namespace DDF5CS_ADT_2023241.Repository
                 .HasMany(cm => cm.RentInstances)
                 .WithOne(ri => ri.CarModel)
                 .HasForeignKey(ri => ri.CarModelId);
+            modelBuilder.Entity<RentInstance>()
+                .HasOne(r => r.CarModel)
+                .WithMany()
+                .HasForeignKey(r => r.CarModelId);
 
             modelBuilder.Entity<Brand>().HasData(
                     new Brand { BrandId = 1, BrandName = "Brand1"},
