@@ -10,12 +10,9 @@ namespace DDF5CS_ADT_2023241.Logic
     public interface ICarModelLogic
     {
         void CreateCarModel(CarModel carModel);
-        CarModel GetCarModel(int id);
+        CarModel? GetCarModel(int id);
         IEnumerable<CarModel> GetAllCarModels();
         void UpdateCarModel(CarModel carModel);
         void DeleteCarModel(int id);
-
-        IEnumerable<Brand> GetBrandsForCarModel(int carModelId);
-        IEnumerable<RentInstance> GetRentInstancesForCarModel(int carModelId);
     }
 }

@@ -10,9 +10,11 @@ namespace DDF5CS_ADT_2023241.Logic
     public interface ICarModelRepository
     {
         void Create(CarModel carModel);
-        CarModel Read(int id);
+        CarModel? Read(int id);
         IQueryable<CarModel> ReadAll();
         void Update(CarModel carModel);
         void Delete(int id);
+
+        IEnumerable<CarModel> GetAllCarModels();
     }
 }

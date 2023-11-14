@@ -16,37 +16,30 @@ namespace DDF5CS_ADT_2023241.Logic
             _rentInstanceRepository = rentInstanceRepository;
         }
 
+        public IEnumerable<RentInstance> GetAllRentInstances()
+        {
+            return _rentInstanceRepository.GetAllRentInstances();
+        }
+
         public void CreateRentInstance(RentInstance rentInstance)
         {
-            // Implement error handling, validation, etc.
             _rentInstanceRepository.Create(rentInstance);
         }
-        public RentInstance GetRentInstance(int id)
+        public RentInstance? GetRentInstance(int id)
         {
             return _rentInstanceRepository.Read(id);
         }
-        public IEnumerable<RentInstance> GetAllRentInstances()
+        /*public IEnumerable<RentInstance> GetAllRentInstances()
         {
             return _rentInstanceRepository.ReadAll();
-        }
+        }*/
         public void UpdateRentInstance(RentInstance rentInstance)
         {
-            // Implement error handling, validation, etc.
             _rentInstanceRepository.Update(rentInstance);
         }
         public void DeleteRentInstance(int id)
         {
             _rentInstanceRepository.Delete(id);
-        }
-        public IEnumerable<Brand> GetBrandsForRentInstance(int rentInstanceId)
-        {
-            // Implement logic to retrieve brands for a rent instance
-            throw new NotImplementedException();
-        }
-        public IEnumerable<CarModel> GetCarModelsForRentInstance(int rentInstanceId)
-        {
-            // Implement logic to retrieve car models for a rent instance
-            throw new NotImplementedException();
         }
     }
 }

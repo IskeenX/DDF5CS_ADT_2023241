@@ -10,9 +10,11 @@ namespace DDF5CS_ADT_2023241.Logic
     public interface IRentInstanceRepository
     {
         void Create(RentInstance rentInstance);
-        RentInstance Read(int id);
+        RentInstance? Read(int id);
         IQueryable<RentInstance> ReadAll();
         void Update(RentInstance rentInstance);
         void Delete(int id);
+
+        IEnumerable<RentInstance> GetAllRentInstances();
     }
 }

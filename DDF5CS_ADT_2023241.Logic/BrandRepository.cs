@@ -18,12 +18,21 @@ namespace DDF5CS_ADT_2023241.Logic
             _dbContext = dbContext;
         }
 
+        public IEnumerable<Brand> GetAllBrands()
+        {
+            return _dbContext.Brands.ToList();
+        }
+        public IEnumerable<CarModel> GetModelsForBrand(int brandId)
+        {
+            return _dbContext.CarModels.Where(c => c.BrandId == brandId).ToList();
+        }
         public void Create(Brand brand)
         {
             _dbContext.Brands.Add(brand);
             _dbContext.SaveChanges();
         }
-        public Brand Read(int id)
+
+        public Brand? Read(int id)
         {
             return _dbContext.Brands.Find(id);
         }

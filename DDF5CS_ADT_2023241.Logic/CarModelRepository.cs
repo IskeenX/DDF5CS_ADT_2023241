@@ -18,12 +18,17 @@ namespace DDF5CS_ADT_2023241.Logic
             _dbContext = dbContext;
         }
 
+        public IEnumerable<CarModel> GetAllCarModels()
+        {
+            return _dbContext.CarModels.ToList();
+        }
+
         public void Create(CarModel carModel)
         {
             _dbContext.CarModels.Add(carModel);
             _dbContext.SaveChanges();
         }
-        public CarModel Read(int id)
+        public CarModel? Read(int id)
         {
             return _dbContext.CarModels.Find(id);
         }

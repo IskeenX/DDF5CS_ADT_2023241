@@ -18,12 +18,17 @@ namespace DDF5CS_ADT_2023241.Logic
             _dbContext = dbContext;
         }
 
+        public IEnumerable<RentInstance> GetAllRentInstances()
+        {
+            return _dbContext.RentInstances.ToList();
+        }
+
         public void Create(RentInstance rentInstance)
         {
             _dbContext.RentInstances.Add(rentInstance);
             _dbContext.SaveChanges();
         }
-        public RentInstance Read(int id)
+        public RentInstance? Read(int id)
         {
             return _dbContext.RentInstances.Find(id);
         }
