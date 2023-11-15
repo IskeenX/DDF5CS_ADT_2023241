@@ -13,7 +13,7 @@ namespace DDF5CS_ADT_2023241.Test
     [TestFixture]
     public class BrandLogicTests
     {
-        [Test]
+        [Test] // Non-CRUD type
         public void GetModelsForBrand_ShouldReturnModels()
         {
             var mockBrandRepository = new Mock<IBrandRepository>();
@@ -26,7 +26,7 @@ namespace DDF5CS_ADT_2023241.Test
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
         }
-        [Test]
+        [Test] // Non-CRUD type
         public void GetAllBrands_ShouldReturnAllBrands()
         {
             var mockBrandRepository = new Mock<IBrandRepository>();
@@ -43,7 +43,7 @@ namespace DDF5CS_ADT_2023241.Test
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count());
         }
-        [Test]
+        [Test] // Create type
         public void CreateBrand_ShouldCreateBrand()
         {
             var brand = new Brand { BrandId = 1, BrandName = "Brand1" };
@@ -55,6 +55,33 @@ namespace DDF5CS_ADT_2023241.Test
             brandLogic.CreateBrand(brand);
 
             mockBrandRepository.Verify(repo => repo.Create(brand), Times.Once);
+        }
+        [Test] // Create type
+        public void CreateBrand_WithEmptyName_ShouldThrowException()
+        {
+            var mockBrandRepository = new Mock<IBrandRepository>();
+            var brandLogic = new BrandLogic(mockBrandRepository.Object);
+
+            Brand brand = new Brand { BrandId = 1, BrandName = "" };
+
+            // Adjusted code to expect ArgumentException with a specific message
+            var exception = Assert.Throws<ArgumentException>(() => brandLogic.CreateBrand(brand));
+            Assert.AreEqual("Brand name cannot be empty", exception?.Message); // Customize the message as needed
+        }
+        [Test] // Freely selected type
+        public void UpdateBrand_WithValidBrand_ShouldUpdateSuccessfully()
+        {
+            var mockBrandRepository = new Mock<IBrandRepository>();
+            var brandLogic = new BrandLogic(mockBrandRepository.Object);
+
+            Brand existingBrand = new Brand { BrandId = 1, BrandName = "ExistingBrand" };
+            Brand updatedBrand = new Brand { BrandId = 1, BrandName = "UpdatedBrand" };
+
+            mockBrandRepository.Setup(repo => repo.Read(It.IsAny<int>())).Returns(existingBrand);
+
+            brandLogic.UpdateBrand(updatedBrand);
+
+            mockBrandRepository.Verify(repo => repo.Update(updatedBrand), Times.Once);
         }
     }
 }

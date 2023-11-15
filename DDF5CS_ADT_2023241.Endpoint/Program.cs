@@ -2,22 +2,22 @@
 {
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            // Your initialization and application logic goes here
+            /*public static void Main(string[] args)
+            {
+                // Your initialization and application logic goes here
 
-            Console.WriteLine("Starting Application...");
+                Console.WriteLine("Starting Application...");
 
-            // For example, start your web host or any other initialization logic
-            InitializeApp();
+                // For example, start your web host or any other initialization logic
+                InitializeApp();
 
-            Console.WriteLine("Application Ended...");
-        }
+                Console.WriteLine("Application Ended...");
+            }
 
-        private static void InitializeApp()
-        {
-            // Your application initialization logic goes here
-            // For instance, starting the web host, setting up configurations, etc.
+            private static void InitializeApp()
+            {
+                // Your application initialization logic goes here
+                // For instance, starting the web host, setting up configurations, etc.
+            }*/
         }
     }
-}

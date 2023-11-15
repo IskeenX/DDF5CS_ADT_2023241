@@ -14,9 +14,12 @@ namespace DDF5CS_ADT_2023241.Logic
         public BrandLogic(IBrandRepository brandRepository) { _brandRepository = brandRepository; }
         public IEnumerable<Brand> GetAllBrands() { return _brandRepository.GetAllBrands(); }
         public IEnumerable<CarModel> GetModelsForBrand(int brandId) { return _brandRepository.GetModelsForBrand(brandId); }
-        public void CreateBrand(Brand brand) { _brandRepository.Create(brand); }
         public Brand? GetBrand(int id) { return _brandRepository.Read(id); }
         public void UpdateBrand(Brand brand) { _brandRepository.Update(brand); }
         public void DeleteBrand(int id) { _brandRepository.Delete(id); }
+        public void CreateBrand(Brand brand) {
+            if (string.IsNullOrWhiteSpace(brand.BrandName)) throw new ArgumentException("Brand name cannot be empty");
+            _brandRepository.Create(brand);
+        }
     }
 }
