@@ -14,12 +14,8 @@ namespace DDF5CS_ADT_2023241.Repository
         public DbSet<CarModel> CarModels { get; set; }
         public DbSet<RentInstance> RentInstances {  get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base (options)
-        {
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base (options) { }
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Brand>()
                 .HasMany(b => b.CarModels)
                 .WithOne(cm => cm.Brand)
@@ -32,19 +28,15 @@ namespace DDF5CS_ADT_2023241.Repository
                 .HasOne(r => r.CarModel)
                 .WithMany()
                 .HasForeignKey(r => r.CarModelId);
-
             modelBuilder.Entity<Brand>().HasData(
                     new Brand { BrandId = 1, BrandName = "Brand1"},
-                    new Brand { BrandId = 2, BrandName = "Brand2"}
-                );
+                    new Brand { BrandId = 2, BrandName = "Brand2"} );
             modelBuilder.Entity<CarModel>().HasData(
                     new CarModel { CarModelId = 1, ModelName = "Model1", BrandId = 1},
-                    new CarModel { CarModelId = 2, ModelName = "Model2", BrandId = 2}
-                );
+                    new CarModel { CarModelId = 2, ModelName = "Model2", BrandId = 2} );
             modelBuilder.Entity<RentInstance>().HasData(
                     new RentInstance { RentInstanceId = 1, RentDate = DateTime.Now, CarModelId = 1},
-                    new RentInstance { RentInstanceId = 2, RentDate = DateTime.Now, CarModelId = 2}
-                );
+                    new RentInstance { RentInstanceId = 2, RentDate = DateTime.Now, CarModelId = 2} );
         }       
     }
 }

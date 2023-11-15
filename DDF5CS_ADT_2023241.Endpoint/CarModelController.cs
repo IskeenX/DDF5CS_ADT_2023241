@@ -10,77 +10,50 @@ namespace DDF5CS_ADT_2023241.Endpoint
     {
         private readonly ICarModelLogic _carModelLogic;
 
-        public CarModelController(ICarModelLogic carModelLogic)
-        {
-            _carModelLogic = carModelLogic;
-        }
-
+        public CarModelController(ICarModelLogic carModelLogic) { _carModelLogic = carModelLogic; }
         [HttpGet("{id}")]
-        public IActionResult GetCarModel(int id)
-        {
+        public IActionResult GetCarModel(int id) {
             var carModel = _carModelLogic.GetCarModel(id);
-            if (carModel == null)
-            {
-                return NotFound();
-            }
+            if (carModel == null) return NotFound();
             return Ok(carModel);
         }
-
         [HttpGet]
-        public IActionResult GetAllCarModels()
-        {
+        public IActionResult GetAllCarModels() {
             var carModels = _carModelLogic.GetAllCarModels();
             return Ok(carModels);
         }
-
         [HttpPost]
         public IActionResult CreateCarModel([FromBody] CarModel carModel)
         {
-            if (carModel == null)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
+            if (carModel == null) return BadRequest();
+            try {
                 _carModelLogic.CreateCarModel(carModel);
                 return CreatedAtAction(nameof(GetCarModel), new { id = carModel.CarModelId }, carModel);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-
         [HttpPut("{id}")]
         public IActionResult UpdateCarModel(int id, [FromBody] CarModel carModel)
         {
-            if (carModel == null || id != carModel.CarModelId)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
+            if (carModel == null || id != carModel.CarModelId) return BadRequest();
+            try {
                 _carModelLogic.UpdateCarModel(carModel);
                 return NoContent();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-
         [HttpDelete("{id}")]
         public IActionResult DeleteCarModel(int id)
         {
-            try
-            {
+            try {
                 _carModelLogic.DeleteCarModel(id);
                 return NoContent();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }

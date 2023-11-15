@@ -11,35 +11,11 @@ namespace DDF5CS_ADT_2023241.Logic
     {
         private readonly IRentInstanceRepository _rentInstanceRepository;
 
-        public RentInstanceLogic(IRentInstanceRepository rentInstanceRepository)
-        {
-            _rentInstanceRepository = rentInstanceRepository;
-        }
-
-        public IEnumerable<RentInstance> GetAllRentInstances()
-        {
-            return _rentInstanceRepository.GetAllRentInstances();
-        }
-
-        public void CreateRentInstance(RentInstance rentInstance)
-        {
-            _rentInstanceRepository.Create(rentInstance);
-        }
-        public RentInstance? GetRentInstance(int id)
-        {
-            return _rentInstanceRepository.Read(id);
-        }
-        /*public IEnumerable<RentInstance> GetAllRentInstances()
-        {
-            return _rentInstanceRepository.ReadAll();
-        }*/
-        public void UpdateRentInstance(RentInstance rentInstance)
-        {
-            _rentInstanceRepository.Update(rentInstance);
-        }
-        public void DeleteRentInstance(int id)
-        {
-            _rentInstanceRepository.Delete(id);
-        }
+        public RentInstanceLogic(IRentInstanceRepository rentInstanceRepository) { _rentInstanceRepository = rentInstanceRepository; }
+        public IEnumerable<RentInstance> GetAllRentInstances() { return _rentInstanceRepository.GetAllRentInstances(); }
+        public void CreateRentInstance(RentInstance rentInstance) { _rentInstanceRepository.Create(rentInstance); }
+        public RentInstance? GetRentInstance(int id) { return _rentInstanceRepository.Read(id); }
+        public void UpdateRentInstance(RentInstance rentInstance) { _rentInstanceRepository.Update(rentInstance); }
+        public void DeleteRentInstance(int id) { _rentInstanceRepository.Delete(id); }
     }
 }

@@ -11,11 +11,6 @@ namespace DDF5CS_ADT_2023241.Logic
     {
         private readonly AppDbContext _dbContext;
 
-        public CarLogic(AppDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-
-
+        public CarLogic(AppDbContext dbContext) { _dbContext = dbContext; }
     }
 }

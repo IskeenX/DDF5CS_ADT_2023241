@@ -10,12 +10,6 @@ namespace DDF5CS_ADT_2023241.Repository
     {
         private readonly AppDbContext _dbContext;
 
-        public CarRepository(AppDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-
-
-
+        public CarRepository(AppDbContext dbContext) { _dbContext = dbContext; }
     }
 }

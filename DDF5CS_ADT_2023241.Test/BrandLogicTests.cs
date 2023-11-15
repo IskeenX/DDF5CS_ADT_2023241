@@ -26,7 +26,6 @@ namespace DDF5CS_ADT_2023241.Test
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
         }
-
         [Test]
         public void GetAllBrands_ShouldReturnAllBrands()
         {
@@ -44,7 +43,6 @@ namespace DDF5CS_ADT_2023241.Test
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count());
         }
-
         [Test]
         public void CreateBrand_ShouldCreateBrand()
         {

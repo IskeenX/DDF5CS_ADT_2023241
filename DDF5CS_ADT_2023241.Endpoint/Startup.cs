@@ -6,16 +6,11 @@ namespace DDF5CS_ADT_2023241.Endpoint
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
 
+        public Startup(IConfiguration configuration) { Configuration = configuration; }
         //Dependency Injection
-        public void ConfigureServices(IServiceCollection services)
-        {
+        public void ConfigureServices(IServiceCollection services) {
             //Framework services
             services.AddControllers();
             //DbContext entity framework
@@ -28,26 +23,16 @@ namespace DDF5CS_ADT_2023241.Endpoint
             services.AddScoped<IBrandLogic, BrandLogic>();
             services.AddScoped<ICarModelLogic, CarModelLogic>();
             services.AddScoped<IRentInstanceLogic, RentInstanceLogic>();
-            
-            //Other configurations...
         }
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+            else {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
